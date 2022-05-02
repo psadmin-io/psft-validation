@@ -1,0 +1,4 @@
+temp/*
+!temp/README.md
+lib/*.log
+data/env/*.properties
