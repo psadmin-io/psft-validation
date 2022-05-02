@@ -5,9 +5,9 @@ jmeter_home="/jmeter/5.4.1"
 jmeter_proj="/jmeter-main" # just to is relative path from this script location?
 
 # $prop_file    = "user.properties"
-plan_file="${jmeter_proj}/plans/psft-validation.jmx" 
-results_file="${jmeter_proj}/temp/psft-validation-results.$(date +"%Y-%b-%d-%H:%M:%S").jtl" # datetime stamp?
-run_log="${jmeter_proj}/temp/psft-validation.log"
+plan_file="${jmeter_proj}/plans/pt-validation.jmx" 
+results_file="${jmeter_proj}/temp/pt-validation-results.$(date +"%Y-%b-%d-%H:%M:%S").jtl" # datetime stamp?
+run_log="${jmeter_proj}/temp/pt-validation.log"
 export JAVA_OPTS="-Xms1024m -Xmx1024m"
 
 #$jmeter_home\bin\jmeter -p "$prop_file" -n -t "$plan_file" `

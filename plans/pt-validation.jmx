@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="PeopleSoft Testing" enabled="true">
-      <stringProp name="TestPlan.comments">PeopleSoft Testing Plan</stringProp>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="PeopleTools Validation" enabled="true">
+      <stringProp name="TestPlan.comments">PeopleTools Validation Testing Plan</stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
@@ -28,6 +28,11 @@
             <stringProp name="Argument.value">${__P(SITE,ps)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="NODE" elementType="Argument">
+            <stringProp name="Argument.name">NODE</stringProp>
+            <stringProp name="Argument.value">${__P(NODE,LOCAL_NODE)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="OPRID" elementType="Argument">
             <stringProp name="Argument.name">OPRID</stringProp>
             <stringProp name="Argument.value">${__P(OPRID,PS)}</stringProp>
@@ -48,24 +53,9 @@
             <stringProp name="Argument.value">${__P(ES_CLUSTER_COUNT,1)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="NODE" elementType="Argument">
-            <stringProp name="Argument.name">NODE</stringProp>
-            <stringProp name="Argument.value">${__P(NODE,LOCAL_NODE)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="ENABLE_PRCS_PSNT" elementType="Argument">
             <stringProp name="Argument.name">ENABLE_PRCS_PSNT</stringProp>
             <stringProp name="Argument.value">${__P(ENABLE_PRCS_PSNT,TRUE)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="ENABLE_PRCS_PSNT2" elementType="Argument">
-            <stringProp name="Argument.name">ENABLE_PRCS_PSNT2</stringProp>
-            <stringProp name="Argument.value">${__P(ENABLE_PRCS_PSNT2,FALSE)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="ENABLE_PRCS_PSNT3" elementType="Argument">
-            <stringProp name="Argument.name">ENABLE_PRCS_PSNT3</stringProp>
-            <stringProp name="Argument.value">${__P(ENABLE_PRCS_PSNT3,FALSE)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="ENABLE_IB" elementType="Argument">

@@ -7,7 +7,33 @@
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments"/>
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="PROTOCOL" elementType="Argument">
+            <stringProp name="Argument.name">PROTOCOL</stringProp>
+            <stringProp name="Argument.value">${__P(PROTOCOL,http)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="HOST" elementType="Argument">
+            <stringProp name="Argument.name">HOST</stringProp>
+            <stringProp name="Argument.value">${__P(SERVER,default.server.com)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="PORT" elementType="Argument">
+            <stringProp name="Argument.name">PORT</stringProp>
+            <stringProp name="Argument.value">${__P(PORT,${PORT})}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SITE" elementType="Argument">
+            <stringProp name="Argument.name">SITE</stringProp>
+            <stringProp name="Argument.value">${__P(SITE,ps)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="NODE" elementType="Argument">
+            <stringProp name="Argument.name">NODE</stringProp>
+            <stringProp name="Argument.value">${__P(NODE,LOCAL_NODE)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
@@ -26,9 +52,9 @@
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
-        <stringProp name="HTTPSampler.domain">test.server.com</stringProp>
-        <stringProp name="HTTPSampler.port">443</stringProp>
-        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <stringProp name="HTTPSampler.domain">${HOST}</stringProp>
+        <stringProp name="HTTPSampler.port">${PORT}</stringProp>
+        <stringProp name="HTTPSampler.protocol">http</stringProp>
         <stringProp name="HTTPSampler.contentEncoding"></stringProp>
         <stringProp name="HTTPSampler.path"></stringProp>
         <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
@@ -69,10 +95,10 @@
         <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <stringProp name="LoopController.loops">${__P(loopcount,1)}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(threads,10)}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${__P(rampup,10)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(threads,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampup,1)}</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -82,7 +108,7 @@
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="User List" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding"></stringProp>
-          <stringProp name="filename">C:/jmeter/temp/Testing-Users.csv</stringProp>
+          <stringProp name="filename">C:/psft-validation/temp/Testing-Users.csv</stringProp>
           <boolProp name="ignoreFirstLine">false</boolProp>
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">true</boolProp>
@@ -91,53 +117,25 @@
           <stringProp name="variableNames">OPRID,PASS</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-          <stringProp name="ConstantTimer.delay">20000</stringProp>
-          <stringProp name="TestPlan.comments">Recorded:11211ms</stringProp>
-        </ConstantTimer>
-        <hashTree/>
-        <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="User Logout" enabled="false">
-          <collectionProp name="ModuleController.node_path">
-            <stringProp name="764597751">Test Plan</stringProp>
-            <stringProp name="1589146697">PeopleSoft Testing</stringProp>
-            <stringProp name="1605476103">Module Library</stringProp>
-            <stringProp name="3450385">psft</stringProp>
-            <stringProp name="3588">pt</stringProp>
-            <stringProp name="318200703">User Logout</stringProp>
-          </collectionProp>
-        </ModuleController>
-        <hashTree/>
         <ModuleController guiclass="ModuleControllerGui" testclass="ModuleController" testname="User Login" enabled="true">
           <collectionProp name="ModuleController.node_path">
             <stringProp name="764597751">Test Plan</stringProp>
             <stringProp name="1589146697">PeopleSoft Testing</stringProp>
             <stringProp name="1605476103">Module Library</stringProp>
-            <stringProp name="3450385">psft</stringProp>
-            <stringProp name="3588">pt</stringProp>
-            <stringProp name="2088474324">User Login</stringProp>
           </collectionProp>
         </ModuleController>
         <hashTree/>
-        <URLRewritingModifier guiclass="URLRewritingModifierGui" testclass="URLRewritingModifier" testname="ICSID Modifier" enabled="true">
-          <stringProp name="argument_name">ICSID</stringProp>
-          <boolProp name="path_extension">false</boolProp>
-          <boolProp name="path_extension_no_equals">false</boolProp>
-          <boolProp name="path_extension_no_questionmark">false</boolProp>
-          <boolProp name="cache_value">true</boolProp>
-          <boolProp name="encode">false</boolProp>
-        </URLRewritingModifier>
-        <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="General Task Loop" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="General Task Loop" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="TestPlan.comments">Each user will do general tasks this many times</stringProp>
-          <stringProp name="LoopController.loops">5</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Review My Preferences" enabled="true"/>
           <hashTree>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-              <stringProp name="ConstantTimer.delay">20000</stringProp>
-              <stringProp name="TestPlan.comments">How long to wait between clicks</stringProp>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">1000</stringProp>
+              <stringProp name="TestPlan.comments">How long to wait between clicks [ 1000ms = 1s ]</stringProp>
             </ConstantTimer>
             <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click Home button" enabled="true">
@@ -148,7 +146,7 @@
               <stringProp name="HTTPSampler.port"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-              <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/SA/s/WEBLIB_PTBR.ISCRIPT1.FieldFormula.IScript_StartPage</stringProp>
+              <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/${NODE}/s/WEBLIB_PTBR.ISCRIPT1.FieldFormula.IScript_StartPage</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -167,10 +165,6 @@
               <hashTree/>
               <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
-                  <elementProp name="Referer" elementType="Header">
-                    <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">https://test.server.com/psc/ps/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL?</stringProp>
-                  </elementProp>
                   <elementProp name="Accept-Language" elementType="Header">
                     <stringProp name="Header.name">Accept-Language</stringProp>
                     <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
@@ -203,7 +197,7 @@
               <stringProp name="HTTPSampler.port"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-              <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/SA/s/WEBLIB_PTBR.ISCRIPT1.FieldFormula.IScript_StartPage</stringProp>
+              <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/${NODE}/s/WEBLIB_PTBR.ISCRIPT1.FieldFormula.IScript_StartPage</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -222,10 +216,6 @@
               <hashTree/>
               <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
-                  <elementProp name="Referer" elementType="Header">
-                    <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">https://test.server.com/psc/ps/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL?</stringProp>
-                  </elementProp>
                   <elementProp name="Accept-Language" elementType="Header">
                     <stringProp name="Header.name">Accept-Language</stringProp>
                     <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
@@ -252,21 +242,13 @@
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click Action Menu &gt; My Preferences" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="CONTEXTIDPARAMS" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.name">CONTEXTIDPARAMS</stringProp>
-                    <stringProp name="Argument.value">PSFT_CS---PT_LANDINGPAGE</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  </elementProp>
-                </collectionProp>
+                <collectionProp name="Arguments.arguments"/>
               </elementProp>
               <stringProp name="HTTPSampler.domain"></stringProp>
               <stringProp name="HTTPSampler.port"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/SA/c/PTGP_MENU.PTGP_USERPREF_FL.GBL</stringProp>
+              <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/${NODE}/c/PTGP_MENU.PTGP_USERPREF_FL.GBL</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -284,10 +266,6 @@
               <hashTree/>
               <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
-                  <elementProp name="Referer" elementType="Header">
-                    <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">https://test.server.com/psc/ps/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL?</stringProp>
-                  </elementProp>
                   <elementProp name="Accept-Language" elementType="Header">
                     <stringProp name="Header.name">Accept-Language</stringProp>
                     <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
@@ -547,7 +525,7 @@
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-                <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/SA/c/PTGP_MENU.PTGP_USER_PERS_FL.GBL</stringProp>
+                <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/${NODE}/c/PTGP_MENU.PTGP_USER_PERS_FL.GBL</stringProp>
                 <stringProp name="HTTPSampler.method">POST</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -565,10 +543,6 @@
                 <hashTree/>
                 <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                   <collectionProp name="HeaderManager.headers">
-                    <elementProp name="Referer" elementType="Header">
-                      <stringProp name="Header.name">Referer</stringProp>
-                      <stringProp name="Header.value">https://test.server.com/psc/${SITE}/EMPLOYEE/SA/c/PTGP_MENU.PTGP_USERPREF_FL.GBL?CONTEXTIDPARAMS=PSFT_CS---PT_LANDINGPAGE</stringProp>
-                    </elementProp>
                     <elementProp name="Accept-Language" elementType="Header">
                       <stringProp name="Header.name">Accept-Language</stringProp>
                       <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
@@ -816,7 +790,7 @@
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-                <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/SA/c/PTGP_MENU.PTGP_USER_PERS_FL.GBL</stringProp>
+                <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/${NODE}/c/PTGP_MENU.PTGP_USER_PERS_FL.GBL</stringProp>
                 <stringProp name="HTTPSampler.method">POST</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -834,10 +808,6 @@
                 <hashTree/>
                 <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                   <collectionProp name="HeaderManager.headers">
-                    <elementProp name="Referer" elementType="Header">
-                      <stringProp name="Header.name">Referer</stringProp>
-                      <stringProp name="Header.value">https://test.server.com/psc/${SITE}/EMPLOYEE/SA/c/PTGP_MENU.PTGP_USERPREF_FL.GBL?CONTEXTIDPARAMS=PSFT_CS---PT_LANDINGPAGE</stringProp>
-                    </elementProp>
                     <elementProp name="Accept-Language" elementType="Header">
                       <stringProp name="Header.name">Accept-Language</stringProp>
                       <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
@@ -904,7 +874,7 @@
               <stringProp name="HTTPSampler.port"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-              <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/SA/c/PTGP_MENU.PTGP_USER_PERS_FL.GBL</stringProp>
+              <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/${NODE}/c/PTGP_MENU.PTGP_USER_PERS_FL.GBL</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -922,10 +892,6 @@
               <hashTree/>
               <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
-                  <elementProp name="Referer" elementType="Header">
-                    <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">https://test.server.com/psc/ps/EMPLOYEE/SA/c/PTGP_MENU.PTGP_USERPREF_FL.GBL?CONTEXTIDPARAMS=PSFT_CS---PT_LANDINGPAGE</stringProp>
-                  </elementProp>
                   <elementProp name="Accept-Language" elementType="Header">
                     <stringProp name="Header.name">Accept-Language</stringProp>
                     <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
@@ -954,7 +920,7 @@
               <stringProp name="HTTPSampler.port"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-              <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/SA/s/WEBLIB_PTBR.ISCRIPT1.FieldFormula.IScript_StartPage</stringProp>
+              <stringProp name="HTTPSampler.path">/psc/${SITE}/EMPLOYEE/${NODE}/s/WEBLIB_PTBR.ISCRIPT1.FieldFormula.IScript_StartPage</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -973,10 +939,6 @@
               <hashTree/>
               <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
-                  <elementProp name="Referer" elementType="Header">
-                    <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">https://test.server.com/psc/ps/EMPLOYEE/SA/c/PTGP_MENU.PTGP_USERPREF_FL.GBL?CONTEXTIDPARAMS=PSFT_CS---PT_LANDINGPAGE</stringProp>
-                  </elementProp>
                   <elementProp name="Accept-Language" elementType="Header">
                     <stringProp name="Header.name">Accept-Language</stringProp>
                     <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
@@ -1120,11 +1082,11 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">C:\jmeter\temp\psft-general-load-results.gui.jtl</stringProp>
+        <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
       <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
-        <boolProp name="ResultCollector.error_logging">true</boolProp>
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
           <value class="SampleSaveConfiguration">
@@ -1157,7 +1119,7 @@
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">C:\jmeter\temp\psft-general-load-assertion-results.gui.jtl</stringProp>
+        <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
     </hashTree>
