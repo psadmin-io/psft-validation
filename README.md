@@ -48,8 +48,8 @@ To run *JMeter* in CLI mode, you need to pass [multiple parameters](https://jmet
   --jmeterlogfile "$run_log" `
 ```
 
-# PeopleSoft Validation Test Plan
-The PeopleSoft Validation test plan([psft-validation.jmx]()) can be used to validate a PeopleSoft environments configuration and functionality. The goal of this plan is to test a series of PeopleTools functions to ensure an environment is configured correctly. This is often used after a refresh, applying maintenance or initial build.
+# PeopleTools Validation Test Plan
+The PeopleTools Validation test plan([pt-validation.jmx]()) can be used to validate a PeopleSoft environments configuration and functionality. The goal of this plan is to test a series of PeopleTools functions to ensure an environment is configured correctly. This is often used after a refresh, applying maintenance or initial build.
 
 ## Validation Tests
 
@@ -83,7 +83,7 @@ cd c:\jmeter
 You can run the PeopleSoft Validation Test Plan from Rundeck. Pass in the environment name and credentials. The job will pick a batch server for this environment to run on. It will first copy the latest version of this JMeter Library, then run the test plan. If there are any errors in the test plan log, the Rundeck job will fail. 
 
 # Environment User Properties
-Each environment has its own *user.properties* file. This can be found at `data\env\$ENVNAME.properties`. Below is an example of a properties file.
+Each environment has its own *user.properties* file. This can be found at `data\$ENVNAME.properties`. Below is an example of a properties file.
 
 ```
 # Thread Group Settings
