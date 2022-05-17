@@ -49,7 +49,7 @@ To run *JMeter* in CLI mode, you need to pass [multiple parameters](https://jmet
 ```
 
 # PeopleTools Validation Test Plan
-The PeopleTools Validation test plan([/plans/psft-general-load.jmx]()) can be used to validate a PeopleSoft environments configuration and functionality. The goal of this plan is to test a series of PeopleTools functions to ensure an environment is configured correctly. This is often used after a refresh, applying maintenance or initial build.
+The PeopleTools Validation test plan([plans/pt-validation.jmx](https://github.com/psadmin-io/psft-validation/blob/main/plans/pt-validation.jmx)) can be used to validate a PeopleSoft environments configuration and functionality. The goal of this plan is to test a series of PeopleTools functions to ensure an environment is configured correctly. This is often used after a refresh, applying maintenance or initial build.
 
 ## Validation Tests
 
