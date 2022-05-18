@@ -21,7 +21,7 @@ cd $jmeter_home/bin || return
 
 # check for failures
 failures="$(grep 'Test failed:' ${results_file} )"
-if [ -z "$failures" ]; then
+if [ ${#failures} -ge 2 ]; then
     echo "ERROR: Results file contains failures!"
     exit 1
 else
