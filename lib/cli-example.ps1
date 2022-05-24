@@ -30,7 +30,7 @@ cd $JMeterHome\bin\
   --jmeterlogfile "$run_log" `  
   
 # Post Validate
-$error_pattern = '(?<=\[!ERROR!\])(.*)(?=\[!ERROR!\])'
+$error_pattern = '(?<=\[!ERROR!\])(.*)(?=\[!ERROR!\])|(Connection timed out)'
 #$failures = Select-String -Path $results_file -Pattern "$error_pattern"
 $failures = Select-String -Path $results_file -Pattern "$error_pattern" -AllMatches
 if ($failures -ne $null){
