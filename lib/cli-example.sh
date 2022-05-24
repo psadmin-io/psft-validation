@@ -15,12 +15,12 @@ cd $jmeter_home/bin || return
 ./jmeter -n -t $plan_file \
   -p $prop_file \
   -JOPRID="$User" \
-  -JPASS="$Pass"
+  -JPASS="$Pass" \
   --logfile       $results_file \
   --jmeterlogfile $run_log
 
 # check for failures
-failures="$(grep 'Test failed:' ${results_file} )"
+failures="$(grep '\!ERROR\!' ${results_file} )"
 if [ ${#failures} -ge 2 ]; then
     echo "ERROR: Results file contains failures!"
     exit 1
