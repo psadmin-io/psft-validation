@@ -20,9 +20,9 @@ cd $jmeter_home/bin || return
   --jmeterlogfile $run_log
 
 # check for failures
-failures="$(grep '\!ERROR\!' ${results_file} )"
+failures="$(grep -E "\!ERROR\!|connect failed" ${results_file} )"
 if [ ${#failures} -ge 2 ]; then
-    echo "ERROR: Results file contains failures!"
+    echo "ERROR: Results file contains failures! $failures"
     exit 1
 else
     echo "Success!"
