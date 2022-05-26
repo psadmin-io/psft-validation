@@ -30,7 +30,7 @@ function main () {
           --jmeterlogfile $run_log
 
         # check for failures
-        failures="$(grep '\!ERROR\!' ${results_file} )"
+        failures="$(grep -E "\!ERROR\!|Non HTTP response message|connect failed" ${results_file} )"
         if [ ${#failures} -ge 2 ]; then
             echo "ERROR: Results file contains failures!"
             exit 1
