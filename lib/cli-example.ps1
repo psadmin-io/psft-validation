@@ -6,8 +6,8 @@ Param(
     [Parameter(Position=0,Mandatory=$true)][string]$Environment,
     [string]$User,
 	  [string]$Pass,
-	  [string]$JMeterHome = "<JMETER_HOME>", # binary
-	  [string]$JMeterLib	= "<REPO_DIR>" # test plans
+	  [string]$JMeterHome = "c:\jmeter", # binary
+	  [string]$JMeterLib	= "c:\psft-validation" # test plans
 )
 
 # Vars
