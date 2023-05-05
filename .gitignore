@@ -2,3 +2,4 @@ temp/*
 !temp/README.md
 lib/*.log
 data/env/*.properties
+!data/env/hr.properties
